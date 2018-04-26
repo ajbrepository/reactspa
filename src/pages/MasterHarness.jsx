@@ -13,7 +13,7 @@ import {
 import { LinkContainer  } from 'react-router-bootstrap';
 import { ButtonToolbar,Button } from 'react-bootstrap';
 import HeaderPane from './HeaderPane';
-import OverLay from './OverLay';
+import OverLay from './Overlay';
 import HomePane from './HomePane';
 import Footer from './Footer';
 import firebase, { auth, provider } from '../auth/firebase';
