@@ -5,11 +5,11 @@ const path =require('path');
 const port = 8080;
 const app = express();
 
-app.use('/assets', express.static(path.join(__dirname, '../dist/assets')));
+app.use('/assets', express.static(path.join(__dirname, '../web/assets')));
 
 app.get('/', function (req, res) {
     console.log("Webapp root Navigated at "+new Date().toString());
-    res.sendFile(path.join(__dirname, '../dist/index.html'));
+    res.sendFile(path.join(__dirname, '../web/index.html'));
 });
 
 app.get('/bundle.js', function (req, res) {
