@@ -35,8 +35,11 @@ export default class MasterHarness extends Component{
           </div>
           
     );
+    
   }
-
+componentDidMount(){
+  console.log("Harness  "+this.props);
+}
   
 
 }

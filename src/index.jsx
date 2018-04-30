@@ -11,7 +11,10 @@ import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 //App Redux components
 import allReducers from './store/reducers';
+import {storeActiveUser} from './store/actions/index'
+import redStore from './store/util/createStore'
 
-const store=createStore(allReducers);
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
+//redStore.dispatch(storeActiveUser({name:'XYZ',displayName:'XYZ@abc.com'}));
+console.log('From index ---- Store ::'+redStore);
+ReactDOM.render(<Provider store={redStore}><App /></Provider>, document.getElementById('app'));
 registerServiceWorker();

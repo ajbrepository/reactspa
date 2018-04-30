@@ -14,12 +14,12 @@ import { LinkContainer } from 'react-router-bootstrap';
 import MasterHarness from './MasterHarness';
 
 class App extends Component {
- 
+
   render() {
     return (
       <div>
-      <MasterHarness/>     
-  </div>
+        <MasterHarness />
+      </div>
     );
   }
 

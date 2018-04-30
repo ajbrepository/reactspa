@@ -14,8 +14,18 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { ButtonToolbar,Button } from 'react-bootstrap';
 import firebase, { auth, provider } from '../auth/firebase';
-//-- Overlay effect when opening sidebar on small screens --
-export default class HeaderPane extends Component {
+//-- Redux components --
+import {storeActiveUser} from '../store/actions/index'
+
+//Redux
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
+//redux components
+import redStore from '../store/util/createStore'
+
+
+class HeaderPane extends Component {
     render() {
         return (
             <div>
@@ -60,6 +70,8 @@ export default class HeaderPane extends Component {
               user: null
             });
           });
+          console.log("Removing  active users");
+            //storeActiveUser(null);
       }
       login() {
         auth.signInWithPopup(provider) 
@@ -68,7 +80,12 @@ export default class HeaderPane extends Component {
             this.setState({
               user
             });
+            //Storing active users
+            console.log("Storing active users");
+            //storeActiveUser(user);
+            redStore.dispatch(storeActiveUser(user));
           });
+          
       }
       componentDidUpdate(){
         console.log('Compoent Updated by ---- '+(this.state.user?this.state.user.displayName:""));
@@ -90,3 +107,21 @@ export default class HeaderPane extends Component {
       this.logout = this.logout.bind(this); // <-- add this line
       }
 }
+// Get apps state and pass it as props to UserList
+//      > whenever state changes, the UserList will automatically re-render
+function mapStateToProps(state) {
+
+    console.log("State ::::: "+state.activeUser)
+    return {
+      activeUser: state.activeUser
+    };
+  }
+
+  // Get actions and pass them as props to to UserList
+//      > now UserList has this.props.storeActiveUser
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({storeActiveUser: storeActiveUser}, dispatch);
+}
+// We don't want to return the plain UserList (component) anymore, we want to return the smart Container
+//      > UserList is now aware of state and actions
+export default connect(mapStateToProps, matchDispatchToProps)(HeaderPane);

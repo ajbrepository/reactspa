@@ -1,8 +1,9 @@
-export default function (state = null, action) {
-    switch (action.type) {
-        case 'USER_SELECTED':
-            return action.payload;
-            break;
+export default function (state = {}, action) {
+    console.log('Action :: '+action);
+    if(action.type === 'USER_LOGGED')
+    {
+        return [...state,action];
     }
+    
     return state;
 }

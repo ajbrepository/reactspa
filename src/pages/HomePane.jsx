@@ -16,9 +16,17 @@ var divStyle = {
   marginLeft: "200px"
 };
 
-export default class HomePane extends Component {
+//Redux
+import {connect} from 'react-redux';
+
+
+class HomePane extends Component {
+  componentWillMount(){
+    console.log("Mount "+this.props.activeUser)
+  }
 
   render() {
+  
     return (
 
       <div>
@@ -48,6 +56,7 @@ export default class HomePane extends Component {
             <div className="w3-third w3-container">
               <p className="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
               <p className="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+              <p>{this.props.loggedUser?this.props.loggedUser.payload.displayName:""}</p>
             </div>
           </div>
         </div>
@@ -56,3 +65,14 @@ export default class HomePane extends Component {
     );
   }
 }
+// Get apps state and pass it as props to HomePane
+//      > whenever state changes, the HomePane will automatically re-render
+function mapStateToProps(state) {
+  debugger;
+  console.log("Fetching from store"+ state);
+  return {
+    loggedUser: state.activeUser[0]
+  };
+}
+
+export default connect(mapStateToProps)(HomePane);

@@ -11,6 +11,9 @@ import {
   Router
 } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
+//redux components
+import redStore from '../store/util/createStore'
+import {storeActiveUser} from '../store/actions/index'
 export default class Footer extends Component{
   render(){
     return(
@@ -23,7 +26,17 @@ export default class Footer extends Component{
         <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
         </div>
         </footer>
+        {/*<button onClick={this.clickMe}>My Button </button>*/}
       </div>
     );
   }
+  constructor(props){
+    super(props);
+    //this.clickMe = this.clickMe.bind(this); 
+  }
+  /*clickMe(){
+    console.log('My Button Clicked');
+    console.log(this.props);
+    redStore.dispatch(storeActiveUser({name:'Footer',displayName:'Footer@abc.com'}));
+  }*/
 }
