@@ -68,7 +68,7 @@ class HomePane extends Component {
 // Get apps state and pass it as props to HomePane
 //      > whenever state changes, the HomePane will automatically re-render
 function mapStateToProps(state) {
-  debugger;
+  //debugger;
   console.log("Fetching from store"+ state);
   return {
     loggedUser: state.activeUser[0]
