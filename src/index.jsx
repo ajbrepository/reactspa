@@ -14,7 +14,7 @@ import allReducers from './store/reducers';
 import {storeActiveUser} from './store/actions/index'
 import redStore from './store/util/createStore'
 
-//redStore.dispatch(storeActiveUser({name:'XYZ',displayName:'XYZ@abc.com'}));
+//redStore.dispatch(storeActiveUser(null));
 console.log('From index ---- Store ::'+redStore);
 ReactDOM.render(<Provider store={redStore}><App /></Provider>, document.getElementById('app'));
 registerServiceWorker();

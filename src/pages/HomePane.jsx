@@ -11,7 +11,7 @@ import {
   Router
 } from "react-router-dom";
 import { LinkContainer } from 'react-router-bootstrap';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Image } from 'react-bootstrap';
 var divStyle = {
   marginLeft: "200px"
 };
@@ -26,9 +26,9 @@ class HomePane extends Component {
   }
 
   render() {
-  
+    //debugger;
     return (
-
+      
       <div>
         <div className="w3-container w3-hide-small">
           <Carousel className="w3-container">
@@ -55,8 +55,10 @@ class HomePane extends Component {
             </div>
             <div className="w3-third w3-container">
               <p className="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
-              <p className="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
-              <p>{this.props.loggedUser?this.props.loggedUser.payload.displayName:""}</p>
+              <p className="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>     
+                     
+              <p>{/*this.props.loggedUser?this.props.loggedUser.payload.displayName:""*/}</p>              
+              <img style={{width: '50px', height: '50px'}} src={this.props.loggedUser?this.props.loggedUser.payload.photoURL:""}/>
             </div>
           </div>
         </div>
@@ -69,9 +71,9 @@ class HomePane extends Component {
 //      > whenever state changes, the HomePane will automatically re-render
 function mapStateToProps(state) {
   //debugger;
-  console.log("Fetching from store"+ state);
-  return {
-    loggedUser: state.activeUser[0]
+  console.log("Fetching from store ::  "+ state.activeUser);
+  return {    
+    loggedUser: state.activeUser
   };
 }
 
