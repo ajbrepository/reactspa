@@ -28,10 +28,10 @@ export default class MasterHarness extends Component{
                   <div className="content">
                     <Route exact path="/" component={HomePane}/>
                     <Route exact path="/projects"/>
-                  </div>
-                  <Footer/>
+                  </div>                  
               </div>              
-            </HashRouter>          
+            </HashRouter>
+            <Footer/>          
           </div>
           
     );

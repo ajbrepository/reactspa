@@ -9,7 +9,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 .bottom-align {
   position: relative;
   left: 0em;
-  bottom: 0em;
+  bottom: 0px;
   width: 100%;
 }
 .carousel-size {
